@@ -3,17 +3,20 @@
 This is the backend server for the Kilimani Issues Reporting system. It is built using Flask, a lightweight WSGI web application framework in Python. This server handles form submissions from the frontend and processes the data.
 
 ## Project Structure
+
+```plaintext
 project/
 ├── backend/
-│ ├── app.py
-│ ├── init.py
+│   ├── app.py
+│   ├── __init__.py
 ├── templates/
-│ ├── index.html
+│   ├── index.html
 ├── static/
-│ ├── styles.css
-│ ├── script.js
+│   ├── styles.css
+│   ├── script.js
 ├── venv/
 └── requirements.txt
+
 
 - `backend/app.py`: The main Flask application file.
 - `backend/__init__.py`: The initializer file for the backend package.
