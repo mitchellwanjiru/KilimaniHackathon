@@ -16,7 +16,7 @@ project/
 │   ├── script.js
 ├── venv/
 └── requirements.txt
-
+```
 
 - `backend/app.py`: The main Flask application file.
 - `backend/__init__.py`: The initializer file for the backend package.
