@@ -37,12 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
         report: `<h2>Report an Issue</h2>
                  <form id="report-form">
                      <label for="issue-type">Issue Type:</label>
-                     <select id="issue-type" required>
+                     <select id="issue-type" name="issue-type" required>
                          <option value="water-shortage">Water Shortage</option>
                          <option value="green-cover">Green Cover</option>
                      </select>
                      <label for="location">Location:</label>
-                     <select id="location" required>
+                     <select id="location" name="location" required>
                          <option value="">--Select Location--</option>
                          <option value="yaya-centre">Yaya Centre</option>
                          <option value="adams-arcade">Adams Arcade</option>
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
                          <option value="kilimani-police-station">Kilimani Police Station</option>
                      </select>
                      <label for="description">Description:</label>
-                     <textarea id="description" required></textarea>
+                     <textarea id="description" name="description" required></textarea>
                      <label for="photo">Upload Photo/Video:</label>
                      <input type="file" id="photo" name="photo" accept="image/*,video/*">
                      <label for="user-email">Email:</label>
@@ -99,6 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 fetch('/submit-issue', {
                     method: 'POST',
                     headers: {
+                        'Accept': 'application/json',
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify(Object.fromEntries(formData.entries())) // Correctly convert FormData to JSON
@@ -119,6 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 fetch('/submit-contact', {
                     method: 'POST',
                     headers: {
+                        'Accept': 'application/json',
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify(Object.fromEntries(formData.entries())) // converting FormData to JSON
@@ -127,6 +129,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 .then(data => {
                     alert(data.message);
                     contactForm.reset();
+                });
+            });
+        }
+
+        const reportForm = document.getElementById('report-form');
+        if (reportForm) {
+            reportForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const formData = new FormData(reportForm);
+                fetch('/submit-report', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(Object.fromEntries(formData.entries())) // converting FormData to JSON
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message);
+                    reportForm.reset();
                 });
             });
         }

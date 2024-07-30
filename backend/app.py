@@ -1,8 +1,12 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)  # This will allow cross-origin requests
+
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 @app.route('/submit-issue', methods=['POST'])
 def submit_issue():
