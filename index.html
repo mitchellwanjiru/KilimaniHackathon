@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kilimani Urban Planning Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Urban Planning Dashboard</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#report">Report an Issue</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="dashboard">
+            <h2>Dashboard</h2>
+            <div id="map"></div>
+            <div id="statistics">
+                <h3>Statistics</h3>
+                <p id="water-shortage">Water Shortage Areas: 0</p>
+                <p id="green-cover">Green Cover Areas: 0</p>
+            </div>
+        </section>
+        <section id="report">
+            <h2>Report an Issue</h2>
+            <form id="report-form">
+                <label for="issue-type">Issue Type:</label>
+                <select id="issue-type" required>
+                    <option value="water-shortage">Water Shortage</option>
+                    <option value="green-cover">Green Cover</option>
+                </select>
+                <label for="location">Location:</label>
+                <select id="issue-type" required>
+                    <option value="">--Select Location--</option>
+            <option value="yaya-centre">Yaya Centre</option>
+            <option value="adams-arcade">Adams Arcade</option>
+            <option value="green-house">The Green House</option>
+            <option value="prestige-plaza">Prestige Plaza</option>
+            <option value="chandarana-foodplus">Chandarana Foodplus</option>
+            <option value="kings-gym">King's Gym</option>
+            <option value="kilimani-primary-school">Kilimani Primary School</option>
+            <option value="kenol-petrol-station">Kenol Petrol Station</option>
+            <option value="junction-mall">The Junction Mall</option>
+            <option value="lavington-mall">Lavington Mall</option>
+            <option value="kilimani-police-station">Kilimani Police Station</option>
+                </select>
+                <label for="description">Description:</label>
+                <textarea id="description" required></textarea>
+                <label for="photo">Upload Photo/Video:</label>
+                <input type="file" id="photo" name="photo" accept="image/*,video/*">
+
+                <label for="user-email">Email:</label>
+                <input type="email" id="user-email" name="user-email">
+                
+                <label for="user-phone">Phone Number:</label>
+                <input type="tel" id="user-phone" name="user-phone">
+            </form>
+            <button type="submit">Submit</button>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Urban Planning Dashboard</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
