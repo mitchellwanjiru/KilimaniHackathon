@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
                       <button type="submit">Submit</button>
                   </form>`,
         report: `<h2>Report an Issue</h2>
-                 <form id="report-form">
+                 <form id="report-form" enctype="multipart/form-data">
                      <label for="issue-type">Issue Type:</label>
                      <select id="issue-type" name="issue-type" required>
                          <option value="water-shortage">Water Shortage</option>
@@ -96,13 +96,13 @@ document.addEventListener('DOMContentLoaded', () => {
             issueForm.addEventListener('submit', (e) => {
                 e.preventDefault();
                 const formData = new FormData(issueForm);
-                fetch('/submit-issue', {
+                fetch('http://127.0.0.1:5000/submit-issue', {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json' // Change to handle JSON data if needed
                     },
-                    body: JSON.stringify(Object.fromEntries(formData.entries())) // Correctly convert FormData to JSON
+                    body: JSON.stringify(Object.fromEntries(formData.entries())) // Converting FormData to JSON
                 })
                 .then(response => {
                     if (!response.ok) {
@@ -129,8 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 fetch('http://127.0.0.1:5000/submit-contact', {
                     method: 'POST',
                     headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
+                        'Accept': 'application/json'
                     },
                     body: JSON.stringify(Object.fromEntries(formData.entries())) // Converting FormData to JSON
                 })
@@ -156,13 +155,10 @@ document.addEventListener('DOMContentLoaded', () => {
             reportForm.addEventListener('submit', (e) => {
                 e.preventDefault();
                 const formData = new FormData(reportForm);
+
                 fetch('http://127.0.0.1:5000/submit-report', {
                     method: 'POST',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(Object.fromEntries(formData.entries())) // Converting FormData to JSON
+                    body: formData // Send FormData directly
                 })
                 .then(response => {
                     if (!response.ok) {
