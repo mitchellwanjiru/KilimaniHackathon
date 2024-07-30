@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify(Object.fromEntries(formData))
+                    body: JSON.stringify(Object.fromEntries(formData.entries())) // Correctly convert FormData to JSON
                 })
                 .then(response => response.json())
                 .then(data => {
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify(Object.fromEntries(formData))
+                    body: JSON.stringify(Object.fromEntries(formData.entries())) // converting FormData to JSON
                 })
                 .then(response => response.json())
                 .then(data => {
