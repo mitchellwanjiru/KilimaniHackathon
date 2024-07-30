@@ -74,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to display a specific section's content
     function showContent(section) {
         contentDiv.innerHTML = dashboardContent[section];
+        attachFormHandlers();
     }
 
     // Event listener for section links under the Dashboard
@@ -87,4 +88,60 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize the dashboard with a default view
     showContent('home');
+
+    // Function to attach form submission handlers
+    function attachFormHandlers() {
+        const issueForm = document.getElementById('issueForm');
+        if (issueForm) {
+            issueForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const formData = new FormData(issueForm);
+                fetch('/submit-issue', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(Object.fromEntries(formData))
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message);
+                    issueForm.reset();
+                });
+            });
+        }
+
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const formData = new FormData(contactForm);
+                fetch('/submit-contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(Object.fromEntries(formData))
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message);
+                    contactForm.reset();
+                });
+            });
+        }
+    }
 });
+
+// Functions for showing and reporting issues
+window.showReportForm = () => {
+    document.getElementById('report-form').classList.toggle('hidden');
+};
+
+window.reportIssue = (issueType) => {
+    const issueTypeField = document.getElementById('issueType');
+    if (issueTypeField) {
+        issueTypeField.value = issueType;
+    }
+    showContent('report');
+};
