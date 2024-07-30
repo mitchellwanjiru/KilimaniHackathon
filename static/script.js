@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 })
                 .then(data => {
                     alert(data.message);
-                    issueForm.reset();
+                    showContent('home'); // Navigate back to home after successful submission
                 })
                 .catch(error => {
                     console.error('Error:', error);
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 })
                 .then(data => {
                     alert(data.message);
-                    contactForm.reset();
+                    showContent('home'); // Navigate back to home after successful submission
                 })
                 .catch(error => {
                     console.error('Error:', error);
@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 })
                 .then(data => {
                     alert(data.message);
-                    reportForm.reset();
+                    showContent('home'); // Navigate back to home after successful submission
                 })
                 .catch(error => {
                     console.error('Error:', error);
