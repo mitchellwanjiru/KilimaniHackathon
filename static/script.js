@@ -104,10 +104,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     },
                     body: JSON.stringify(Object.fromEntries(formData.entries())) // Correctly convert FormData to JSON
                 })
-                .then(response => response.json())
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok.');
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     alert(data.message);
                     issueForm.reset();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Failed to submit issue. Please try again.');
                 });
             });
         }
@@ -117,18 +126,27 @@ document.addEventListener('DOMContentLoaded', () => {
             contactForm.addEventListener('submit', (e) => {
                 e.preventDefault();
                 const formData = new FormData(contactForm);
-                fetch('/submit-contact', {
+                fetch('http://127.0.0.1:5000/submit-contact', {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify(Object.fromEntries(formData.entries())) // converting FormData to JSON
+                    body: JSON.stringify(Object.fromEntries(formData.entries())) // Converting FormData to JSON
                 })
-                .then(response => response.json())
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok.');
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     alert(data.message);
                     contactForm.reset();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Failed to submit contact form. Please try again.');
                 });
             });
         }
@@ -138,18 +156,27 @@ document.addEventListener('DOMContentLoaded', () => {
             reportForm.addEventListener('submit', (e) => {
                 e.preventDefault();
                 const formData = new FormData(reportForm);
-                fetch('/submit-report', {
+                fetch('http://127.0.0.1:5000/submit-report', {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify(Object.fromEntries(formData.entries())) // converting FormData to JSON
+                    body: JSON.stringify(Object.fromEntries(formData.entries())) // Converting FormData to JSON
                 })
-                .then(response => response.json())
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok.');
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     alert(data.message);
                     reportForm.reset();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Failed to submit report. Please try again.');
                 });
             });
         }
