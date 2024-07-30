@@ -6,8 +6,6 @@ This directory contains the HTML templates used to render the web pages for the 
 ## Directory Structure
 
 - **`index.html`**: The main entry point for the application. This page provides navigation to different sections.
-- **`report.html`**: The page where users can report issues.
-- **`contact.html`**: The page for users to contact the administrators.
 - **`README.md`**: This file provides an overview of the templates and their usage.
 
 ## Usage

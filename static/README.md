@@ -4,9 +4,8 @@ This directory contains static files used in the Kilimani Issues Reporting Syste
 
 ## Directory Structure
 
-- **`css/`**: Contains CSS files for styling the web pages.
-- **`js/`**: Contains JavaScript files for handling frontend logic and interactions.
-- **`images/`**: Contains image files used throughout the application.
+- Contains CSS files for styling the web pages.
+- Contains JavaScript files for handling frontend logic and interactions.
 - **`README.md`**: This file provides an overview of the static files and their usage.
 
 ## Usage
