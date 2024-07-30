@@ -1,117 +1,23 @@
-# Kilimani Issues Reporting Backend
+# Project Overview
 
-This is the backend server for the Kilimani Issues Reporting system. It is built using Flask, a lightweight WSGI web application framework in Python. This server handles form submissions from the frontend and processes the data.
+Welcome to the Kilimani Issues Reporting System!
 
-## Project Structure
+This project provides a web-based platform to report and view issues in the Kilimani neighborhood. The system is designed to help residents report issues related to water shortages, green space crises, and other local concerns. It includes features for submitting reports, viewing issue lists, and accessing detailed information about the neighborhood.
 
-```plaintext
-project/
-├── backend/
-│   ├── app.py
-│   ├── __init__.py
-├── templates/
-│   ├── index.html
-├── static/
-│   ├── styles.css
-│   ├── script.js
-├── venv/
-└── requirements.txt
-```
+## Directory Structure
 
-- `backend/app.py`: The main Flask application file.
-- `backend/__init__.py`: The initializer file for the backend package.
-- `templates/index.html`: The main HTML file for the frontend.
-- `static/styles.css`: The CSS file for styling the frontend.
-- `static/script.js`: The JavaScript file for frontend functionality.
-- `venv/`: The virtual environment for Python packages.
-- `requirements.txt`: The file containing the Python package dependencies.
+- **`backend/`**: Contains the server-side code and API endpoints.
+- **`templates/`**: Contains HTML templates used for rendering the web pages.
+- **`static/`**: Contains static files such as CSS, JavaScript, and images.
+- **`README.md`**: This file provides an overview of the project and directory structure.
 
-## Setup
+## Getting Started
 
-### Prerequisites
+1. **Install Dependencies**: Follow the instructions in the `backend/README.md` for setting up the backend environment.
+2. **Run the Project**: Ensure you have the backend server running and open `index.html` in the `templates/` directory to view the application.
 
-- Python 3.x
-- Virtualenv (optional but recommended)
-
-### Installation
-
-1. **Clone the repository**:
-    ```bash
-    git clone https://github.com/username/kilimani-issues-reporting.git
-    cd kilimani-issues-reporting
-    ```
-
-2. **Set up a virtual environment** (recommended):
-    ```bash
-    python3 -m venv venv
-    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-    ```
-
-3. **Install dependencies**:
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-4. **Run the Flask application**:
-    ```bash
-    cd backend
-    flask run
-    ```
-
-The server should now be running on `http://127.0.0.1:5000/`.
-
-## API Endpoints
-
-### `POST /submit-issue`
-
-This endpoint handles the submission of issue reports.
-
-- **Request Body**:
-    ```json
-    {
-        "issueType": "string",
-        "description": "string"
-    }
-    ```
-
-- **Response**:
-    ```json
-    {
-        "status": "success",
-        "message": "Issue submitted successfully!"
-    }
-    ```
-
-### `POST /submit-contact`
-
-This endpoint handles the submission of contact information.
-
-- **Request Body**:
-    ```json
-    {
-        "name": "string",
-        "email": "string",
-        "message": "string"
-    }
-    ```
-
-- **Response**:
-    ```json
-    {
-        "status": "success",
-        "message": "Contact information submitted successfully!"
-    }
-    ```
+For detailed instructions on each component, refer to the respective directory's README file.
 
 ## Contributing
 
-If you wish to contribute to this project, please fork the repository and create a pull request with your changes. Ensure that your code adheres to the project's coding standards and includes appropriate tests.
-
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for details.
-
-## Acknowledgments
-
-- The Flask framework: [Flask](https://flask.palletsprojects.com/)
-- The Kilimani community for inspiring this project.
+Feel free to contribute by opening issues or submitting pull requests. Your contributions are welcome!
