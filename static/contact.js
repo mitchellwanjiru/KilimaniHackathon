@@ -12,22 +12,20 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .then(response => response.json())
         .then(data => {
-            if (data.message === 'Contact form submitted successfully!') {
-                // Store submission data in local storage
-                localStorage.setItem('contactSubmission', JSON.stringify({
-                    id: data.id,
-                    timestamp: data.timestamp
-                }));
-                
-                // Redirect to index.html
+            if (data.message.includes('Your submission ID is')) {
+                // Store the submission ID in localStorage
+                localStorage.setItem('submissionId', data.submissionId);
+
+                // Redirect to the index page
                 window.location.href = 'index.html';
             } else {
-                alert(data.message); // Display error message
+                // Display error message
+                alert(data.message);
             }
         })
         .catch(error => {
             console.error("Error:", error);
-            alert("Failed to submit contact form."); // Display error message
+            alert("Failed to submit contact form.");
         });
     });
 });

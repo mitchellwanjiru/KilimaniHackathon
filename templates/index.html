@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kilimani Community</title>
     <link rel="stylesheet" href="../static/styles.css">
+    <link rel="stylesheet" href="../static/contact_status.css">
 </head>
 <body>
     <header>
@@ -34,30 +35,25 @@
         </section>
         <section id="contact-status" style="display: none;">
             <h2>Contact Submission Status</h2>
-            <p id="contact-message"></p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Received</th>
+                        <th>Being Reviewed</th>
+                        <th>Reviewed</th>
+                    </tr>
+                </thead>
+                <tbody id="status-table-body">
+                    <!-- Status rows will be inserted here -->
+                </tbody>
+            </table>
         </section>
     </main>
     <footer>
         <p>&copy; 2024 Kilimani Community</p>
     </footer>
     <script src="../static/script.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const contactStatusSection = document.getElementById('contact-status');
-            const contactMessage = document.getElementById('contact-message');
-
-            const submissionData = localStorage.getItem('contactSubmission');
-            if (submissionData) {
-                const { id, timestamp } = JSON.parse(submissionData);
-                contactMessage.textContent = `Thank you for contacting Us! Your submission ID is ${id}, and it was received at ${timestamp}.`;
-                
-                // Clear the local storage
-                localStorage.removeItem('contactSubmission');
-                
-                // Show the contact status section
-                contactStatusSection.style.display = 'block';
-            }
-        });
-    </script>
+    <script src="../static/contact_status.js"></script>
 </body>
 </html>

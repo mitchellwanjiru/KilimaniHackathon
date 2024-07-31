@@ -1,44 +1,57 @@
 from flask import Blueprint, request, jsonify
-import json
 import os
-from datetime import datetime
+import json
 
 contact_api = Blueprint('contact_api', __name__)
-
-# File to store contact form submissions
-CONTACT_DATA_FILE = 'contact_data.json'
-
-# Ensure the file exists
-if not os.path.exists(CONTACT_DATA_FILE):
-    with open(CONTACT_DATA_FILE, 'w') as f:
-        json.dump([], f)
 
 @contact_api.route('/submit-contact', methods=['POST'])
 def submit_contact():
     try:
         data = request.form.to_dict()
-        # Generate an ID for the contact form entry
-        contact_id = datetime.now().strftime('%Y%m%d%H%M%S')
-        timestamp = datetime.now().isoformat()
+        contact_data_path = 'backend/storage/contact_data.json'
         
-        contact_entry = {
-            'id': contact_id,
-            'timestamp': timestamp,
-            **data
-        }
-
-        # Append the contact entry to the JSON file
-        with open(CONTACT_DATA_FILE, 'r') as f:
+        # Ensure the file exists
+        if not os.path.exists(contact_data_path):
+            with open(contact_data_path, 'w') as f:
+                json.dump([], f)
+        
+        # Read existing data
+        with open(contact_data_path, 'r') as f:
             contact_data = json.load(f)
-        contact_data.append(contact_entry)
-        with open(CONTACT_DATA_FILE, 'w') as f:
-            json.dump(contact_data, f, indent=4)
-
-        return jsonify({
-            'message': 'Contact form submitted successfully!',
-            'id': contact_id,
-            'timestamp': timestamp
-        })
+        
+        # Generate new ID
+        new_id = len(contact_data) + 1
+        
+        # Add new contact entry
+        new_contact = {
+            'id': new_id,
+            'received': True,
+            'being_reviewed': False,
+            'reviewed': False
+        }
+        contact_data.append(new_contact)
+        
+        # Save updated data
+        with open(contact_data_path, 'w') as f:
+            json.dump(contact_data, f)
+        
+        # Return the submission ID in the response
+        return jsonify({'message': f'Contact form submitted successfully! Your submission ID is {new_id}', 'submissionId': new_id})
     except Exception as e:
         print(f"Error in submit_contact: {e}")
         return jsonify({'message': 'Failed to submit contact form.'}), 500
+
+@contact_api.route('/contact-data', methods=['GET'])
+def get_contact_data():
+    try:
+        contact_data_path = 'backend/storage/contact_data.json'
+        if not os.path.exists(contact_data_path):
+            return jsonify([])
+        
+        with open(contact_data_path, 'r') as f:
+            contact_data = json.load(f)
+        
+        return jsonify(contact_data)
+    except Exception as e:
+        print(f"Error in get_contact_data: {e}")
+        return jsonify([]), 500

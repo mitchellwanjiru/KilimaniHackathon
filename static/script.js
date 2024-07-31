@@ -47,4 +47,36 @@ document.addEventListener('DOMContentLoaded', () => {
     window.reportIssue = function(type) {
         document.getElementById('issue-type').value = type;
     };
+
+    // Contact status display
+    const contactStatus = document.getElementById('contact-status');
+    const statusTableBody = document.getElementById('status-table-body');
+    
+    // Retrieve contact data from localStorage
+    const submissionId = localStorage.getItem('submissionId');
+    if (submissionId) {
+        contactStatus.style.display = 'block';
+        fetch('http://127.0.0.1:5000/contact-data')
+            .then(response => response.json())
+            .then(data => {
+                const contact = data.find(entry => entry.id === parseInt(submissionId));
+                if (contact) {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${contact.id}</td>
+                        <td>${contact.received ? '✔️' : '❌'}</td>
+                        <td>${contact.being_reviewed ? '✔️' : '❌'}</td>
+                        <td>${contact.reviewed ? '✔️' : '❌'}</td>
+                    `;
+                    statusTableBody.appendChild(row);
+                }
+                localStorage.removeItem('submissionId');
+            })
+            .catch(error => {
+                console.error('Error fetching contact data:', error);
+                contactStatus.style.display = 'none';
+            });
+    } else {
+        contactStatus.style.display = 'none';
+    }
 });
