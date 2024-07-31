@@ -12,6 +12,7 @@ document.getElementById('report-form').addEventListener('submit', function (even
         if (data.status === 'success') {
             alert('Issue reported successfully!');
             this.reset();
+            window.location.href = '../templates/index.html';  // Redirect to index.html
         } else {
             alert('There was an error reporting the issue. Please try again.');
         }
