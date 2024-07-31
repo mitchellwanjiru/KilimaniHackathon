@@ -61,11 +61,6 @@ Follow these steps to set up the backend environment:
 - **`/submit-contact`**: Handles contact form submissions.
 - **`/submit-report`**: Handles general report submissions.
 
-## Development Tips
-
-- **Testing**: Ensure your code is properly tested. Consider using tools like `pytest` for unit testing.
-- **Debugging**: Run the Flask application in debug mode by setting `app.run(debug=True)` in `app.py` for more detailed error messages during development.
-
 ## Contributing
 
 Contributions to the backend code are welcome. Please follow standard practices for Python development and Flask applications.
