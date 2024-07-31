@@ -13,6 +13,9 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(response => response.json())
         .then(data => {
             alert(data.message); // Display success message to the user
+            if (data.message === 'Contact form submitted successfully!') {
+                window.location.href = 'index.html'; // Redirect to the dashboard
+            }
         })
         .catch(error => {
             console.error("Error:", error);
