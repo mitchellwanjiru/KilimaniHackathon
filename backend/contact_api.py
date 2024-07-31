@@ -27,7 +27,8 @@ def submit_contact():
             'id': new_id,
             'received': True,
             'being_reviewed': False,
-            'reviewed': False
+            'reviewed': False,
+            'message': data.get('message')  # Save the message
         }
         contact_data.append(new_contact)
         

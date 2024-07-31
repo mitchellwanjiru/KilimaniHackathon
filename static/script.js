@@ -67,6 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <td>${contact.received ? '✔️' : '❌'}</td>
                         <td>${contact.being_reviewed ? '✔️' : '❌'}</td>
                         <td>${contact.reviewed ? '✔️' : '❌'}</td>
+                        <td>${contact.message || 'No message'}</td>
                     `;
                     statusTableBody.appendChild(row);
                 }
