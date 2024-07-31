@@ -1,22 +1,16 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, render_template
 from flask_cors import CORS
+from contact_api import contact_api
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='../templates', static_folder='../static')
 CORS(app, resources={r"/*": {"origins": "http://127.0.0.1:5500"}})
+
+# Register the contact form API blueprint
+app.register_blueprint(contact_api)
 
 @app.route('/contact')
 def contact():
     return render_template('contact.html')
-
-@app.route('/submit-contact', methods=['POST'])
-def submit_contact():
-    try:
-        data = request.form.to_dict()
-        print(data)
-        return jsonify({'message': 'Contact form submitted successfully!'})
-    except Exception as e:
-        print(f"Error in submit_contact: {e}")
-        return jsonify({'message': 'Failed to submit contact form.'}), 500
 
 if __name__ == '__main__':
     app.run(debug=True)
