@@ -56,3 +56,5 @@ def get_contact_data():
     except Exception as e:
         print(f"Error in get_contact_data: {e}")
         return jsonify([]), 500
+
+
