@@ -141,3 +141,9 @@ footer {
 canvas {
     max-width: 100%;
 }
+
+
+
+.map img {
+    width: 100%;
+}
