@@ -96,3 +96,48 @@ footer {
     width: 100%;
     bottom: 0;
 }
+.statistics {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.stat {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.stat h3 {
+    margin: 0 0 10px;
+}
+
+.stat p {
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.map {
+    height: 400px;
+    background-color: #ddd;
+    margin-bottom: 20px;
+}
+
+.reports-list {
+    list-style: none;
+    padding: 0;
+}
+
+.reports-list li {
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+canvas {
+    max-width: 100%;
+}
